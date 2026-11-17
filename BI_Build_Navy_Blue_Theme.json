@@ -1,0 +1,129 @@
+{
+  "name": "BI Build Navy Blue Corporate",
+  "dataColors": [
+    "#174A8B",
+    "#6EA6D7",
+    "#2E8B57",
+    "#D83A4B",
+    "#F2B134",
+    "#4F6D7A",
+    "#8E6BBE",
+    "#79B7A3"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#163A63",
+  "tableAccent": "#2D6AA6",
+  "good": "#2E8B57",
+  "neutral": "#F2B134",
+  "bad": "#D83A4B",
+  "maximum": "#174A8B",
+  "center": "#FFFFFF",
+  "minimum": "#DCEAF7",
+  "null": "#E6EAF0",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "show": true,
+            "fontFace": "Segoe UI",
+            "fontSize": 12,
+            "fontFamily": "Segoe UI",
+            "color": {
+              "solid": {
+                "color": "#174A8B"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#E2E8F0"
+              }
+            },
+            "radius": 8
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": true,
+            "foreground": {
+              "solid": {
+                "color": "#174A8B"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F4F7FB"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E9EEF5"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#174A8B"
+              }
+            },
+            "fontSize": 24,
+            "fontFace": "Segoe UI Semibold"
+          }
+        ],
+        "categoryLabels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#4B6178"
+              }
+            },
+            "fontSize": 10,
+            "fontFace": "Segoe UI"
+          }
+        ]
+      }
+    }
+  }
+}

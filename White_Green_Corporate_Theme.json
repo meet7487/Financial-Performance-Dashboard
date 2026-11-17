@@ -1,0 +1,80 @@
+{
+  "name": "White and Green Corporate",
+  "dataColors": [
+    "#217346",
+    "#70AD47",
+    "#A9D18E",
+    "#548235",
+    "#4472C4",
+    "#ED7D31",
+    "#A5A5A5"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#263238",
+  "tableAccent": "#217346",
+  "good": "#217346",
+  "neutral": "#FFC000",
+  "bad": "#C00000",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "color": {
+              "solid": {
+                "color": "#1F3D2B"
+              }
+            },
+            "fontSize": 12,
+            "fontFamily": "Aptos"
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": {
+              "solid": {
+                "color": "#D9E6DC"
+              }
+            },
+            "radius": 6
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F5F8F5"
+              }
+            },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#EAF1EB"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+// Power BI Financial Performance Dashboard - DAX Measures
+// Tables expected: Transactions, Budget, Calendar
+// Amount columns: Transactions[Amount_INR], Budget[BudgetAmount_INR]
+// Recommended: use posted transactions only for actuals.
+
+Posted Amount =
+CALCULATE(
+    SUM(Transactions[Amount_INR]),
+    Transactions[Status] = "Posted"
+)
+
+Total Income =
+CALCULATE(
+    [Posted Amount],
+    Transactions[Type] = "Income"
+)
+
+Total Expenses =
+CALCULATE(
+    [Posted Amount],
+    Transactions[Type] = "Expense"
+)
+
+Net Profit =
+[Total Income] - [Total Expenses]
+
+Profit Margin % =
+DIVIDE([Net Profit], [Total Income], 0)
+
+Total Budget =
+SUM(Budget[BudgetAmount_INR])
+
+Income Budget =
+CALCULATE(
+    [Total Budget],
+    Budget[Type] = "Income"
+)
+
+Expense Budget =
+CALCULATE(
+    [Total Budget],
+    Budget[Type] = "Expense"
+)
+
+// Positive value means actual income is above budget.
+Income Budget Variance =
+[Total Income] - [Income Budget]
+
+// Positive value means actual expenses are below budget, which is generally favorable.
+Expense Budget Variance =
+[Expense Budget] - [Total Expenses]
+
+Income Budget Variance % =
+DIVIDE([Income Budget Variance], [Income Budget], 0)
+
+Expense Budget Variance % =
+DIVIDE([Expense Budget Variance], [Expense Budget], 0)
+
+Previous Month Profit =
+CALCULATE(
+    [Net Profit],
+    DATEADD(Calendar[Date], -1, MONTH)
+)
+
+Profit MoM Change =
+[Net Profit] - [Previous Month Profit]
+
+Profit MoM Growth % =
+DIVIDE([Profit MoM Change], [Previous Month Profit], 0)
+
+Income MoM Change =
+[Total Income] -
+    CALCULATE([Total Income], DATEADD(Calendar[Date], -1, MONTH))
+
+Income MoM Growth % =
+DIVIDE(
+    [Income MoM Change],
+    CALCULATE([Total Income], DATEADD(Calendar[Date], -1, MONTH)),
+    0
+)
+
+Transaction Count =
+CALCULATE(
+    COUNTROWS(Transactions),
+    Transactions[Status] = "Posted"
+)
+
+Average Transaction Value =
+DIVIDE([Posted Amount], [Transaction Count], 0)
+
+Expense Budget Utilization % =
+DIVIDE([Total Expenses], [Expense Budget], 0)
+
+
+Income Budget Remaining =
+[Income Budget] - [Total Income]
+
+Projected Full Year Income =
+VAR MonthsWithData =
+    DISTINCTCOUNT(Calendar[MonthNumber])
+VAR MonthlyRunRate =
+    DIVIDE([Total Income], MonthsWithData, 0)
+RETURN
+    MonthlyRunRate * 12
+
+Income Budget Variance Label =
+VAR V = [Income Budget Variance]
+RETURN
+    IF(V >= 0, "Above budget", "Below budget")
